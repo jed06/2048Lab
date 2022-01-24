@@ -44,13 +44,22 @@ public class Board {
 		 * System.out.println(String.format("%04d",x));
 		 *     
 		 */
+		String builder = String.format("%04d", board[0][0]);
 		
+		builder +="\n"; //-> new line character
+		
+		builder += String.format("%04d", board[0][1]);
 		//setup loops to visit
 		//every spot possible
+		for(int row = 0; row < board.length; row++) {
+			for(int col = 0; col < board[row].length; col++) {
+				builder +="\n";
+				builder += String.format("%04d", board[row][col]);
+			}
+		}
 		
 		
-		
-		return "";
+		return builder;
 	}
 
 	/*
