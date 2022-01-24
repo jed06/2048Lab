@@ -71,7 +71,6 @@ public class Board {
 	 * int randomNum = rnd.nextInt(10); //returns a number in range [0 10) (not
 	 * inclusive on the 10)
 	 */
-
 	public void populateOne() {
 		
 		// is there an empty spot?
