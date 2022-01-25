@@ -80,9 +80,10 @@ public class Board {
 		int row = rnd.nextInt(4);
 		int col = rnd.nextInt(4);
 			
-		if(rnd.nextInt(4)<= 1) {
+		if(row == 0 && col == 0) {
 			// this demonstrates a 50% change
 			//0 or 1 will be generated 25% of the time
+			
 			
 		}
 	}
