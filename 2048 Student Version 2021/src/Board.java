@@ -15,7 +15,7 @@ public class Board {
 		// instantiate the board
 		board = new int[4][4];
 	}
-
+	
 	/*
 	 * return a String representation of the 2D array board
 	 * each row should be in its own line
