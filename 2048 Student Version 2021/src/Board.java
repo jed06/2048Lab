@@ -14,8 +14,6 @@ public class Board {
 		
 		// instantiate the board
 		board = new int[4][4];
-		populateOne();
-		populateOne();
 	}
 
 	/*
@@ -44,18 +42,18 @@ public class Board {
 		 * System.out.println(String.format("%04d",x));
 		 *     
 		 */
-		String builder = String.format("%04d", board[0][0]);
+		String builder = String.format("");
 		
-		builder +="\n"; //-> new line character
-		
-		builder += String.format("%04d", board[0][1]);
+		builder += String.format("");
+		builder += "";
 		//setup loops to visit
 		//every spot possible
 		for(int row = 0; row < board.length; row++) {
 			for(int col = 0; col < board[row].length; col++) {
-				builder +="\n";
 				builder += String.format("%04d", board[row][col]);
+				builder += " ";
 			}
+			builder +="\n";
 		}
 		
 		
@@ -85,6 +83,7 @@ public class Board {
 		if(rnd.nextInt(4)<= 1) {
 			// this demonstrates a 50% change
 			//0 or 1 will be generated 25% of the time
+			
 		}
 	}
 
