@@ -3,7 +3,8 @@ import java.util.Random;
 public class Board {
  
 	private int[][] board; // holds state of game
-	private Random rnd = new Random(0); // setup random # generator
+	private Random rnd = new Random(); // setup random # generator
+	boolean isFull = false;
 	
 	//What instance variable can you add to keep track of the size or the number of tiles occupied?
 	
@@ -31,6 +32,14 @@ public class Board {
 	// overriding a method is when a "child"
 	// class implement the exact same method
 	// that its parent class has
+	
+	public void eraseBoard() {
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length; col++) {
+				board[row][col] = 0;
+			}
+		}
+	}
 	public String toString() {
 		
 		/*
@@ -77,16 +86,45 @@ public class Board {
 		// generate another set of row and column
 		// what happens if the entire board is full??! 
 		
-		int row = rnd.nextInt(4);
-		int col = rnd.nextInt(4);
+		int rndrow = rnd.nextInt(4);
+		int rndcol = rnd.nextInt(4);
+		int randomNum = rnd.nextInt(100);
+		//System.out.println(randomNum+ "U");
+		while(!isFull) {
+			randomNum = rnd.nextInt(100);
 			
-		if(row == 0 && col == 0) {
-			// this demonstrates a 50% change
-			//0 or 1 will be generated 25% of the time
-			
-			
+			if (board[rndrow][rndcol] == 0) {
+				if (randomNum < 90) {
+					board[rndrow][rndcol] = 2;
+				}
+				else {
+					board[rndrow][rndcol] = 4;
+				}
+				return;
+			}
+			else {
+				for (int row = 0; row < board.length; row++) {
+					for (int col = 0; col < board[row].length; col++) {						
+						if (board[row][col] != 0) {
+							isFull = true;
+						}
+						else {
+							isFull = false;
+							//break outer ;
+						}
+					}
+				}
+				
+				if (!isFull) {
+					rndrow = rnd.nextInt(4);
+					rndcol = rnd.nextInt(4);	
+				}
+				
+			}
 		}
 	}
+		
+		
 
 	/*
 	 * 
