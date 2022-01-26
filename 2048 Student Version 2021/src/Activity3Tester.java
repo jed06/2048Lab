@@ -12,12 +12,6 @@ public class Activity3Tester {
 		int a[] = {2, 0 ,0 , 0};
 		SlideRight(a);
 		System.out.println();
-		int a2[] = {2, 0 , 2 , 0};
-		SlideRight(a2);
-		System.out.println();
-		int a3[] = {2, 2 , 2 , 0};
-		SlideRight(a3);
-		System.out.println();
 		
 		//invoke the slideRight method on the array 
 		
@@ -29,8 +23,7 @@ public class Activity3Tester {
 	}
 	
 	public static void SlideRight(int[] a) {
-		for(int i=0; i < a.length ; i++)
-		{
+		for(int i=0; i < a.length ; i++){
 			if(a[i] != 0) {
 				for(int j = i+1; j < a.length ; j++) {
 					if(a[j] == 0) {

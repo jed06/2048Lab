@@ -138,12 +138,19 @@ public class Board {
 	 */
 
 	public void slideRight(int[] row) {
-		
-
-	
+/*		for(int i=0; i < row.length ; i++){
+			if(row[i] != 0) {
+				for(int j = i+1; j < row.length ; j++) {
+					if(row[j] == 0) {
+						row[j] = row[i];
+						row[i] = 0;
+					}
+				}
+			}
+		}*/
 	}
 
-	/*
+/*
 	 * 
 	 * Move the numbers as far to the right as they can go
 	 * aka the numbers are trying to move to the right-most
@@ -155,11 +162,15 @@ public class Board {
 	 */
 
 	public void slideRight() {
-
+/*
 		// go through 2D array, move all digits as far right as possible
 		//setup a loop to grab ONE row at a time from 2d array board
-	
-		
+		int a [] = new int [3];
+		for (int row = 0; row < board.length; row ++) {
+			for (int col = 0; col < board.length; col++) {
+				board[row] = a;
+			}
+		}*/
 	}
 
 	/**
