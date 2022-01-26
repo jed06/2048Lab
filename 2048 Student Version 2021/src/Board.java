@@ -149,7 +149,6 @@ public class Board {
 			}
 		}*/
 	}
-
 /*
 	 * 
 	 * Move the numbers as far to the right as they can go
