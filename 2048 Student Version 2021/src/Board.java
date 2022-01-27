@@ -138,7 +138,7 @@ public class Board {
 	 */
 
 	public void slideRight(int[] row) {
-/*		for(int i=0; i < row.length ; i++){
+		for(int i=0; i < row.length ; i++){
 			if(row[i] != 0) {
 				for(int j = i+1; j < row.length ; j++) {
 					if(row[j] == 0) {
@@ -147,7 +147,7 @@ public class Board {
 					}
 				}
 			}
-		}*/
+		}
 	}
 /*
 	 * 
@@ -161,15 +161,12 @@ public class Board {
 	 */
 
 	public void slideRight() {
-/*
+
 		// go through 2D array, move all digits as far right as possible
 		//setup a loop to grab ONE row at a time from 2d array board
-		int a [] = new int [3];
-		for (int row = 0; row < board.length; row ++) {
-			for (int col = 0; col < board.length; col++) {
-				board[row] = a;
-			}
-		}*/
+		for (int i = 0; i < board.length; i++) {
+			slideRight(board[i]);
+		}
 	}
 
 	/**
@@ -182,7 +179,16 @@ public class Board {
 	 */
 
 	public void slideLeft(int[] arr) {
-		
+		for (int i = arr.length - 1; i >= 0; i--) {
+			if (arr[i] != 0) {
+				for (int j = i-1; j >= 0; j--) {
+					if (arr[j] == 0) {
+						arr[j] = arr[i];
+						arr[i] = 0;
+					}
+				}
+			}
+		}	
 		
 		
 	}
@@ -198,7 +204,9 @@ public class Board {
 		// grabbing a row from a 2D array
 		// if it's called arr then arr[i] grabs ONE row!
 	
-		
+		for (int i = 0; i < board.length; i++) {
+			slideLeft(board[i]);
+		}
 		
 		//visit every single row in the 2D array
 		//call the slideLeft method that takes in one argument
