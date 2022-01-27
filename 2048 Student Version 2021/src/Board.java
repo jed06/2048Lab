@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Random;
 
 public class Board {
@@ -221,7 +222,18 @@ public class Board {
 	public int[] getCol(int[][] data, int c) {
 		
 		//you can also add print out statements here
-		return new int[0];
+		int [] a = new int[data.length];
+		int row = 0;
+		for (int i = 0; i < data.length; i++) {
+			if (data[row][c] != 0) {
+				a[i] = data[row][c];
+				row++;
+			}
+			else {
+				row++;
+			}
+		}
+		return a;
 		
 	}
 
@@ -234,6 +246,9 @@ public class Board {
 	public void slideUp(int[] arr) {
 		/* calls a helper method */
 		// do not rewrite logic you already have!
+		slideLeft(arr);
+		
+		
 	}
 
 	/*
@@ -250,15 +265,19 @@ public class Board {
 		//have slideLeft perform manipulation on the array
 		// copy over the 1D array representation of the column
 		// back to the 2D board array
-
-		
-		
-		
+		for (int col = 0; col < board.length; col++) {
+			int array [] = new int [4];
+			array = getCol(board, col);
+			slideUp(array);
+			for(int row = 0; row < board.length; row++) {
+				board[row][col] = array[row];
+			}
+		}	
 	}
 
 	public void slideDown(int[] arr) {
 
-		
+		slideRight(arr);
 	}
 
 	/*
@@ -269,6 +288,14 @@ public class Board {
 
 	public void slideDown() {
 
+		for (int col = 0; col < board.length; col++) {
+			int array [] = new int [4];
+			array = getCol(board, col);
+			slideDown(array);
+			for(int row = 0; row < board.length; row++) {
+				board[row][col] = array[row];
+			}
+		}
 	}
 
 	/*
@@ -284,7 +311,7 @@ public class Board {
 	 */
 
 	public void combineRight() {
-
+		
 	}
 
 	/*
