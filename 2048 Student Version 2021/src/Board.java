@@ -92,9 +92,9 @@ public class Board {
 		int rndcol = rnd.nextInt(4);
 		int randomNum = rnd.nextInt(100);
 		//System.out.println(randomNum+ "U");
-		while(!isFull) {
+		while(!isBoardFull()) {
 			randomNum = rnd.nextInt(100);
-			
+			System.out.println(isFull + " " + rndrow +" " +rndcol);
 			if (board[rndrow][rndcol] == 0) {
 				if (randomNum < 90) {
 					board[rndrow][rndcol] = 2;
@@ -105,14 +105,14 @@ public class Board {
 				return;
 			}
 			else {
-				for (int row = 0; row < board.length; row++) {
+				outer: for (int row = 0; row < board.length; row++) {
 					for (int col = 0; col < board[row].length; col++) {						
 						if (board[row][col] != 0) {
 							isFull = true;
 						}
 						else {
 							isFull = false;
-							//break outer ;
+							break outer;
 						}
 					}
 				}
@@ -125,7 +125,22 @@ public class Board {
 			}
 		}
 	}
-		
+	
+	public boolean isBoardFull() {
+		boolean result = false;
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length; col++) {						
+				if (board[row][col] != 0) {
+					result = true;
+				}
+				else {
+					return false;
+					
+				}
+			}
+		}
+		return result;
+	}
 		
 
 	/*
@@ -268,7 +283,8 @@ public class Board {
 		for (int col = 0; col < board.length; col++) {
 			int array [] = getCol(board, col);
 			slideUp(array);
-			System.out.println(Arrays.toString(array));
+			combineUp(array);
+			//System.out.println(Arrays.toString(array));
 			for(int row = 0; row < board.length; row++) {
 				board[row][col] = array[row];
 			}
@@ -292,6 +308,7 @@ public class Board {
 			int array [] = new int [4];
 			array = getCol(board, col);
 			slideDown(array);
+			combineDown(array);
 			for(int row = 0; row < board.length; row++) {
 				board[row][col] = array[row];
 			}
@@ -342,7 +359,14 @@ public class Board {
 	 * same behavior as combineRight but the bottom element is zeroed out when
 	 * two elements are combined
 	 */
-
+	public void combineUp(int [] array) {
+		for (int i = 0; i < array.length-1; i++) {
+			if (array[i] == array[i+1]) {
+				array[i] += array[i];
+				array[i+1] = 0;
+			}
+		}
+	}
 	public void combineUp() {
 		
 	}
@@ -352,8 +376,20 @@ public class Board {
 	 * elements are combined
 	 */
 
+	public void combineDown(int[] array) {
+			for (int col = 0; col < array.length-1; col++) {
+				if (array[col] == array[col+1]) {
+					array[col+1] += array[col];
+					array[col] = 0;
+					
+				}
+			}
+		
+		
+	}
+	
 	public void combineDown() {
-
+		
 	}
 
 	
