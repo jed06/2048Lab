@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 
 public class Board {
@@ -247,8 +248,7 @@ public class Board {
 		/* calls a helper method */
 		// do not rewrite logic you already have!
 		slideLeft(arr);
-		
-		
+	
 	}
 
 	/*
@@ -266,9 +266,9 @@ public class Board {
 		// copy over the 1D array representation of the column
 		// back to the 2D board array
 		for (int col = 0; col < board.length; col++) {
-			int array [] = new int [4];
-			array = getCol(board, col);
+			int array [] = getCol(board, col);
 			slideUp(array);
+			System.out.println(Arrays.toString(array));
 			for(int row = 0; row < board.length; row++) {
 				board[row][col] = array[row];
 			}
@@ -311,7 +311,15 @@ public class Board {
 	 */
 
 	public void combineRight() {
-		
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length-1; col++) {
+				if (board[row][col] == board[row][col+1]) {
+					board[row][col+1] += board[row][col];
+					board[row][col] = 0;
+					
+				}
+			}
+		}
 	}
 
 	/*
@@ -320,7 +328,14 @@ public class Board {
 	 */
 
 	public void combineLeft() {
-		
+		for (int row = 0; row < board.length; row++) {
+			for (int col = 0; col < board[row].length-1; col++) {
+				if (board[row][col] == board[row][col+1]) {
+					board[row][col] += board[row][col];
+					board[row][col+1] = 0;
+				}
+			}
+		}
 	}
 	
 	/*
@@ -329,7 +344,7 @@ public class Board {
 	 */
 
 	public void combineUp() {
-
+		
 	}
 
 	/*
@@ -348,14 +363,20 @@ public class Board {
 	 * 
 	 * the combine and slide methods should not worry about each other's methods
 	 */
-	public void left() {
+	public void right() {
 		//1) numbers slide to the left
+		slideRight();
 		//2) combine
+		combineRight();
 		//3) slide
+		//slideRight();
 	}
 
-	public void right() {
-
+	public void left() {
+		slideLeft();
+		combineLeft();
+		slideLeft();
+		
 	}
 
 	public void up() {
@@ -369,7 +390,14 @@ public class Board {
 	
 
 	public boolean gameOver() {
-		return false;
+		for (int i = 0; i < board.length; i++) {
+			for(int j = 0; j < board[i].length; j++) {
+				if (board[i][j] != 0) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 	public int[][] getBoard() {

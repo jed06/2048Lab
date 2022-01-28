@@ -89,26 +89,20 @@ public class BoardGUI extends JPanel implements KeyListener, ActionListener{
 	
 	@Override
 	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		/* call the helper methods for the Board object data*/
-		System.out.println(arg0.getKeyCode());
+		//System.out.println(arg0.getKeyCode());
 		
-		/* you can add tester code to invoke helper methods */
 		int[] result = data.getCol(data.getBoard(),0);
 		System.out.println(Arrays.toString(result));
 		
-		switch(arg0.getKeyCode()) {
-			
-			//slide right
+		switch(arg0.getKeyCode()) {	
 			case 39:
-				data.slideRight();
+				data.right();
 				break;
 				
 			case 37: //left
-				data.slideLeft();
+				data.left();
 				break;
 			case 38: //up
-				//what to do if keyCode is 38?
 				data.slideUp();
 				break;
 			case 40: //down
