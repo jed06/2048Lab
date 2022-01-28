@@ -416,11 +416,15 @@ public class Board {
 	}
 
 	public void up() {
-
+		slideUp();
+		combineUp();
+		slideUp();
 	}
 
 	public void down() {
-
+		slideDown();
+		combineDown();
+		slideDown();
 	}
 	
 	
