@@ -115,10 +115,7 @@ public class BoardGUI extends JPanel implements KeyListener, ActionListener{
 		
 		
 		/** reset the game if all tiles are populated **/
-		if(data.gameOver()) {
-			data = new Board();
-			update();
-		}
+		
 	}
 
 
